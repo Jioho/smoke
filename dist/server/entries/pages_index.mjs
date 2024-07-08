@@ -1,9 +1,9 @@
-import { i as import1 } from "../chunks/chunk-CePaQzNo.js";
+import { i as import1 } from "../chunks/chunk-CzIPRMWI.js";
 import { ref, mergeProps, useSSRContext } from "vue";
 import { ssrRenderAttrs, ssrRenderList, ssrRenderStyle, ssrInterpolate } from "vue/server-renderer";
 import "@vue/server-renderer";
 import "vike/server";
-const testImage = "/assets/static/test.chU2CEVk.jpg";
+const testImage = "/smoke/client/assets/static/test.chU2CEVk.jpg";
 const _sfc_main = {
   __name: "+Page",
   __ssrInlineRender: true,

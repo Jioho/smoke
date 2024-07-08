@@ -7,10 +7,10 @@ const pageFilesList = [];
 const neverLoaded = {};
 const pageConfigsSerialized = [
   {
-    pageId: "/pages/index",
-    isErrorPage: void 0,
-    routeFilesystem: { "routeString": "/", "definedBy": "/pages/index/" },
-    loadConfigValuesAll: () => import("./entries/pages_index.mjs"),
+    pageId: "/pages/_error",
+    isErrorPage: true,
+    routeFilesystem: void 0,
+    loadConfigValuesAll: () => import("./entries/pages_error.mjs"),
     configValuesSerialized: {
       ["clientEntryLoaded"]: {
         type: "computed",
@@ -23,10 +23,10 @@ const pageConfigsSerialized = [
     }
   },
   {
-    pageId: "/pages/_error",
-    isErrorPage: true,
-    routeFilesystem: void 0,
-    loadConfigValuesAll: () => import("./entries/pages_error.mjs"),
+    pageId: "/pages/index",
+    isErrorPage: void 0,
+    routeFilesystem: { "routeString": "/", "definedBy": "/pages/index/" },
+    loadConfigValuesAll: () => import("./entries/pages_index.mjs"),
     configValuesSerialized: {
       ["clientEntryLoaded"]: {
         type: "computed",
@@ -85,13 +85,13 @@ const pageFiles = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.definePro
     ]
   },
   "node_modules/.pnpm/vike@0.4.177_vite@5.3.1/node_modules/vike/dist/esm/client/server-routing-runtime/entry.js": {
-    "file": "assets/entries/entry-server-routing.B4cd-jvv.js",
+    "file": "assets/entries/entry-server-routing.BSAQtVfR.js",
     "name": "entries/entry-server-routing",
     "src": "node_modules/.pnpm/vike@0.4.177_vite@5.3.1/node_modules/vike/dist/esm/client/server-routing-runtime/entry.js",
     "isEntry": true,
     "dynamicImports": [
-      "virtual:vike:pageConfigValuesAll:client:/pages/index",
-      "virtual:vike:pageConfigValuesAll:client:/pages/_error"
+      "virtual:vike:pageConfigValuesAll:client:/pages/_error",
+      "virtual:vike:pageConfigValuesAll:client:/pages/index"
     ]
   },
   "pages/index/assets/test.jpg": {
@@ -112,7 +112,7 @@ const pageFiles = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.definePro
     ]
   },
   "virtual:vike:pageConfigValuesAll:client:/pages/index": {
-    "file": "assets/entries/pages_index.D_hzo4si.js",
+    "file": "assets/entries/pages_index.G9widL_X.js",
     "name": "entries/pages/index",
     "src": "virtual:vike:pageConfigValuesAll:client:/pages/index",
     "isEntry": true,
@@ -131,8 +131,8 @@ const pageFiles = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.definePro
   const pluginManifest = {
     "version": "0.4.177",
     "usesClientRouter": false,
-    "baseServer": "/",
-    "baseAssets": "/",
+    "baseServer": "/smoke/client/",
+    "baseAssets": "/smoke/client/",
     "includeAssetsImportedByServer": true,
     "redirects": {},
     "trailingSlash": false,

@@ -52,7 +52,7 @@ async function onRenderHtml(pageContext) {
   const title = documentProps.title || "";
   const desc = documentProps.description || "";
   const icon = documentProps.icon || "";
-  const baseUrl = "/";
+  const baseUrl = "/smoke/client/";
   const ssr = typeof config.ssr == "boolean" ? config.ssr : true;
   const documentHtml = escapeInject(_a || (_a = __template(['<!DOCTYPE html><html lang="en">\n      <head>\n        <meta charset="UTF-8" />\n        <title>', '</title>\n        <link rel="icon" href="', '">\n        <meta name="description" content="', '" />\n        <meta name="viewport" content="width=device-width, initial-scale=1.0">\n        <meta http-equiv="Cache-Control" content="no-cache,no-store,must-revalidate">\n        <meta http-equiv="Pragma" content="no-cache">\n        <meta http-equiv="Expires" content="0">\n        <script src="', 'amfe-flexible.min.js"><\/script>\n      </head>\n      <body><div id="app">', "</div></body></html>"])), title, icon, desc, baseUrl, ssr ? dangerouslySkipEscape(appHtml) : "");
   return {
