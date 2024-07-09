@@ -14,7 +14,7 @@
             ></div>
             <div class="info">
               <div class="info-row">
-                <span class="label">香烟名称：</span>
+                <span class="label">名称：</span>
                 <span class="text name">{{ item.name }}</span>
               </div>
               <div class="info-row">
@@ -41,7 +41,7 @@ import { ref } from "vue";
 import testImage from "./assets/test.jpg";
 
 const list = ref([]);
-list.value = new Array(4 * 12).fill({}).map((item, index) => {
+list.value = new Array(5 * 4).fill({}).map((item, index) => {
   return {
     id: index + 1,
     name: "中华",
@@ -50,7 +50,6 @@ list.value = new Array(4 * 12).fill({}).map((item, index) => {
     cover: testImage,
   };
 });
-
 </script>
 
 <style lang="less">
@@ -71,10 +70,11 @@ body {
 
 .page-title {
   text-align: center;
-  font-size: 30px;
+  font-size: 20px;
   color: red;
-  padding: 8px 10px;
+  padding: 8px 0;
   font-weight: bold;
+  width: 100%;
 }
 
 .page-content {
@@ -83,7 +83,7 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  padding-top: 30px;
+  padding-top: 20px;
 }
 .list {
   display: flex;
@@ -91,9 +91,13 @@ body {
   height: 100%;
   padding: 0 10px;
   .item {
-    width: 8.333%;
-    min-width: 8.333%;
-    max-width: 8.333%;
+    // width: 8.333%;
+    // min-width: 8.333%;
+    // max-width: 8.333%;
+    height: 25%;
+    width: 20%;
+    min-width: 20%;
+    max-width: 20%;
     height: 25%;
     padding: 20px 10px;
   }
@@ -124,10 +128,10 @@ body {
     }
 
     .label {
-      font-size: 8px;
+      font-size: 6px;
     }
     .text {
-      font-size: 12px;
+      font-size: 8px;
       & + .label {
         margin-left: 4px;
       }
@@ -135,6 +139,7 @@ body {
 
     .name {
       flex: 1;
+      font-size: 10px;
       border-bottom: 1px solid rgba(0, 0, 0, 0.85);
       text-align: center;
     }
@@ -143,16 +148,17 @@ body {
       flex: 1;
       border-bottom: 1px solid rgba(0, 0, 0, 0.85);
       text-align: center;
-      font-size: 10px;
+      font-size: 8px;
     }
 
     .price {
       flex: 1;
       background-color: yellow;
-      padding: 0px 4px;
+      padding: 0px 2px;
       text-align: center;
       font-weight: bold;
       line-height: 1.5;
+      font-size: 8px;
     }
   }
 }

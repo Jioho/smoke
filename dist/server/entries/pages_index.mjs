@@ -9,7 +9,7 @@ const _sfc_main = {
   __ssrInlineRender: true,
   setup(__props) {
     const list = ref([]);
-    list.value = new Array(4 * 12).fill({}).map((item, index) => {
+    list.value = new Array(5 * 4).fill({}).map((item, index) => {
       return {
         id: index + 1,
         name: "中华",
@@ -23,7 +23,7 @@ const _sfc_main = {
       ssrRenderList(list.value, (item) => {
         _push(`<div class="item"><div class="item-wrap"><div class="cover" style="${ssrRenderStyle({
           backgroundImage: "url(" + item.cover + ")"
-        })}"></div><div class="info"><div class="info-row"><span class="label">香烟名称：</span><span class="text name">${ssrInterpolate(item.name)}</span></div><div class="info-row"><span class="label">产地：</span><span class="text origin">${ssrInterpolate(item.origin)}</span><span class="label">零售价：</span><span class="text price">${ssrInterpolate(item.price)}</span><span class="label">元/条</span></div></div></div></div>`);
+        })}"></div><div class="info"><div class="info-row"><span class="label">名称：</span><span class="text name">${ssrInterpolate(item.name)}</span></div><div class="info-row"><span class="label">产地：</span><span class="text origin">${ssrInterpolate(item.origin)}</span><span class="label">零售价：</span><span class="text price">${ssrInterpolate(item.price)}</span><span class="label">元/条</span></div></div></div></div>`);
       });
       _push(`<!--]--></div></div></div>`);
     };
