@@ -1,17 +1,17 @@
 {
   "_chunk-!~{004}~.js": {
-    "file": "assets/static/onRenderClient.c5uRZIdX.css",
+    "file": "assets/static/onRenderClient.DF1Mtsil.css",
     "src": "_chunk-!~{004}~.js"
   },
-  "_chunk-s-grQKL9.js": {
-    "file": "assets/chunks/chunk-s-grQKL9.js",
+  "_chunk-K_s5pnvm.js": {
+    "file": "assets/chunks/chunk-K_s5pnvm.js",
     "name": "_onRenderClient",
     "css": [
-      "assets/static/onRenderClient.c5uRZIdX.css"
+      "assets/static/onRenderClient.DF1Mtsil.css"
     ]
   },
   "node_modules/.pnpm/vike@0.4.177_vite@5.3.1/node_modules/vike/dist/esm/client/server-routing-runtime/entry.js": {
-    "file": "assets/entries/entry-server-routing.g11Y5iIm.js",
+    "file": "assets/entries/entry-server-routing.DqypqVdv.js",
     "name": "entries/entry-server-routing",
     "src": "node_modules/.pnpm/vike@0.4.177_vite@5.3.1/node_modules/vike/dist/esm/client/server-routing-runtime/entry.js",
     "isEntry": true,
@@ -25,29 +25,29 @@
     "src": "pages/index/assets/test.jpg"
   },
   "virtual:vike:pageConfigValuesAll:client:/pages/_error": {
-    "file": "assets/entries/pages_error.BT5p1O-8.js",
+    "file": "assets/entries/pages_error.Da4J6rVn.js",
     "name": "entries/pages/_error",
     "src": "virtual:vike:pageConfigValuesAll:client:/pages/_error",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
-      "_chunk-s-grQKL9.js"
+      "_chunk-K_s5pnvm.js"
     ],
     "css": [
       "assets/static/error.B3JP9_5u.css"
     ]
   },
   "virtual:vike:pageConfigValuesAll:client:/pages/index": {
-    "file": "assets/entries/pages_index.dt4TUGQG.js",
+    "file": "assets/entries/pages_index.mg-6puzF.js",
     "name": "entries/pages/index",
     "src": "virtual:vike:pageConfigValuesAll:client:/pages/index",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
-      "_chunk-s-grQKL9.js"
+      "_chunk-K_s5pnvm.js"
     ],
     "css": [
-      "assets/static/index.CaNbtyka.css"
+      "assets/static/index.Dh_OZ97b.css"
     ],
     "assets": [
       "assets/static/test.chU2CEVk.jpg"

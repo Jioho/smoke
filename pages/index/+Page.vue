@@ -14,7 +14,7 @@
             ></div>
             <div class="info">
               <div class="info-row">
-                <span class="label">名称：</span>
+                <span class="label">香烟名称：</span>
                 <span class="text name">{{ item.name }}</span>
               </div>
               <div class="info-row">
@@ -72,7 +72,7 @@ body {
   text-align: center;
   font-size: 20px;
   color: red;
-  padding: 8px 0;
+  padding: 12px 0;
   font-weight: bold;
   width: 100%;
 }
@@ -83,7 +83,7 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  padding-top: 20px;
+  padding-top: 40px;
 }
 .list {
   display: flex;
@@ -99,7 +99,7 @@ body {
     min-width: 20%;
     max-width: 20%;
     height: 25%;
-    padding: 20px 10px;
+    padding: 10px 10px;
   }
 
   .item-wrap {
@@ -118,7 +118,7 @@ body {
   }
 
   .info {
-    padding: 5px;
+    padding: 8px;
     .info-row {
       display: flex;
       align-items: flex-end;
