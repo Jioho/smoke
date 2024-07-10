@@ -15,15 +15,17 @@
             <div class="info">
               <div class="info-row">
                 <span class="label">香烟名称：</span>
-                <span class="text name border-bottom-noremo">{{ item.name }}</span>
+                <span class="text name border-bottom-norem">{{
+                  item.name
+                }}</span>
               </div>
               <div class="info-row">
                 <span class="label">产地：</span>
-                <span class="text origin border-bottom-noremo">
+                <span class="text origin border-bottom-norem">
                   {{ item.origin }}
                 </span>
                 <span class="label">零售价：</span>
-                <span class="text price">
+                <span class="text price price-norem">
                   {{ item.price }}
                 </span>
                 <span class="label">元/条</span>
@@ -147,21 +149,23 @@ body {
     .origin {
       flex: 1;
       text-align: center;
-      font-size: 4px;
+      font-size: 3px;
     }
 
-    .border-bottom-noremo {
+    .border-bottom-norem {
       border-bottom: 1px solid rgba(0, 0, 0, 0.85);
     }
 
     .price {
       flex: 1;
       background-color: yellow;
-      padding: 0px 0.5px;
       text-align: center;
       font-weight: bold;
       line-height: 1.5;
       font-size: 4px;
+    }
+    .price-norem {
+      padding: 0px 2px;
     }
   }
 }
