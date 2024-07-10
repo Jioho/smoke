@@ -15,11 +15,11 @@
             <div class="info">
               <div class="info-row">
                 <span class="label">香烟名称：</span>
-                <span class="text name">{{ item.name }}</span>
+                <span class="text name border-bottom-noremo">{{ item.name }}</span>
               </div>
               <div class="info-row">
                 <span class="label">产地：</span>
-                <span class="text origin">
+                <span class="text origin border-bottom-noremo">
                   {{ item.origin }}
                 </span>
                 <span class="label">零售价：</span>
@@ -70,9 +70,9 @@ body {
 
 .page-title {
   text-align: center;
-  font-size: 20px;
+  font-size: 8px;
   color: red;
-  padding: 12px 0;
+  padding: 3px 0;
   font-weight: bold;
   width: 100%;
 }
@@ -83,13 +83,14 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  padding-top: 40px;
+  padding-top: 14px;
 }
 .list {
   display: flex;
   flex-wrap: wrap;
   height: 100%;
-  padding: 0 10px;
+  width: 100%;
+  padding: 0 4px;
   .item {
     // width: 8.333%;
     // min-width: 8.333%;
@@ -99,7 +100,7 @@ body {
     min-width: 20%;
     max-width: 20%;
     height: 25%;
-    padding: 10px 10px;
+    padding: 3px 3px;
   }
 
   .item-wrap {
@@ -118,47 +119,49 @@ body {
   }
 
   .info {
-    padding: 8px;
+    padding: 4px;
     .info-row {
       display: flex;
       align-items: flex-end;
       & + .info-row {
-        margin-top: 8px;
+        margin-top: 4px;
       }
     }
 
     .label {
-      font-size: 6px;
+      font-size: 3px;
     }
     .text {
-      font-size: 8px;
+      font-size: 4px;
       & + .label {
-        margin-left: 4px;
+        margin-left: 2px;
       }
     }
 
     .name {
       flex: 1;
-      font-size: 10px;
-      border-bottom: 1px solid rgba(0, 0, 0, 0.85);
+      font-size: 5px;
       text-align: center;
     }
 
     .origin {
       flex: 1;
-      border-bottom: 1px solid rgba(0, 0, 0, 0.85);
       text-align: center;
-      font-size: 8px;
+      font-size: 4px;
+    }
+
+    .border-bottom-noremo {
+      border-bottom: 1px solid rgba(0, 0, 0, 0.85);
     }
 
     .price {
       flex: 1;
       background-color: yellow;
-      padding: 0px 2px;
+      padding: 0px 0.5px;
       text-align: center;
       font-weight: bold;
       line-height: 1.5;
-      font-size: 8px;
+      font-size: 4px;
     }
   }
 }

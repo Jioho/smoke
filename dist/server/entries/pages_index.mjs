@@ -1,4 +1,4 @@
-import { i as import1 } from "../chunks/chunk-CAW2rRnj.js";
+import { i as import1 } from "../chunks/chunk-AxUhDoQ_.js";
 import { ref, mergeProps, useSSRContext } from "vue";
 import { ssrRenderAttrs, ssrRenderList, ssrRenderStyle, ssrInterpolate } from "vue/server-renderer";
 import "@vue/server-renderer";
@@ -23,7 +23,7 @@ const _sfc_main = {
       ssrRenderList(list.value, (item) => {
         _push(`<div class="item"><div class="item-wrap"><div class="cover" style="${ssrRenderStyle({
           backgroundImage: "url(" + item.cover + ")"
-        })}"></div><div class="info"><div class="info-row"><span class="label">香烟名称：</span><span class="text name">${ssrInterpolate(item.name)}</span></div><div class="info-row"><span class="label">产地：</span><span class="text origin">${ssrInterpolate(item.origin)}</span><span class="label">零售价：</span><span class="text price">${ssrInterpolate(item.price)}</span><span class="label">元/条</span></div></div></div></div>`);
+        })}"></div><div class="info"><div class="info-row"><span class="label">香烟名称：</span><span class="text name border-bottom-noremo">${ssrInterpolate(item.name)}</span></div><div class="info-row"><span class="label">产地：</span><span class="text origin border-bottom-noremo">${ssrInterpolate(item.origin)}</span><span class="label">零售价：</span><span class="text price">${ssrInterpolate(item.price)}</span><span class="label">元/条</span></div></div></div></div>`);
       });
       _push(`<!--]--></div></div></div>`);
     };

@@ -74,18 +74,18 @@ const pageFiles = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.definePro
 {
   const assetsManifest = {
   "_chunk-!~{004}~.js": {
-    "file": "assets/static/onRenderClient.DF1Mtsil.css",
+    "file": "assets/static/onRenderClient.C2Z84J1b.css",
     "src": "_chunk-!~{004}~.js"
   },
-  "_chunk-K_s5pnvm.js": {
-    "file": "assets/chunks/chunk-K_s5pnvm.js",
+  "_chunk-BHXpNCQk.js": {
+    "file": "assets/chunks/chunk-BHXpNCQk.js",
     "name": "_onRenderClient",
     "css": [
-      "assets/static/onRenderClient.DF1Mtsil.css"
+      "assets/static/onRenderClient.C2Z84J1b.css"
     ]
   },
   "node_modules/.pnpm/vike@0.4.177_vite@5.3.1/node_modules/vike/dist/esm/client/server-routing-runtime/entry.js": {
-    "file": "assets/entries/entry-server-routing.DqypqVdv.js",
+    "file": "assets/entries/entry-server-routing.C-mh0ppr.js",
     "name": "entries/entry-server-routing",
     "src": "node_modules/.pnpm/vike@0.4.177_vite@5.3.1/node_modules/vike/dist/esm/client/server-routing-runtime/entry.js",
     "isEntry": true,
@@ -99,29 +99,29 @@ const pageFiles = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.definePro
     "src": "pages/index/assets/test.jpg"
   },
   "virtual:vike:pageConfigValuesAll:client:/pages/_error": {
-    "file": "assets/entries/pages_error.Da4J6rVn.js",
+    "file": "assets/entries/pages_error.CHaNJNWr.js",
     "name": "entries/pages/_error",
     "src": "virtual:vike:pageConfigValuesAll:client:/pages/_error",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
-      "_chunk-K_s5pnvm.js"
+      "_chunk-BHXpNCQk.js"
     ],
     "css": [
       "assets/static/error.B3JP9_5u.css"
     ]
   },
   "virtual:vike:pageConfigValuesAll:client:/pages/index": {
-    "file": "assets/entries/pages_index.mg-6puzF.js",
+    "file": "assets/entries/pages_index.QQ3mWa5h.js",
     "name": "entries/pages/index",
     "src": "virtual:vike:pageConfigValuesAll:client:/pages/index",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
-      "_chunk-K_s5pnvm.js"
+      "_chunk-BHXpNCQk.js"
     ],
     "css": [
-      "assets/static/index.Dh_OZ97b.css"
+      "assets/static/index.VyhAyBWW.css"
     ],
     "assets": [
       "assets/static/test.chU2CEVk.jpg"
