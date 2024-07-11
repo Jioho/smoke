@@ -43,6 +43,8 @@ import { ref } from "vue";
 import testImage from "./assets/test.jpg";
 
 const list = ref([]);
+const socket = ref(null);
+
 list.value = new Array(5 * 4).fill({}).map((item, index) => {
   return {
     id: index + 1,
@@ -51,6 +53,83 @@ list.value = new Array(5 * 4).fill({}).map((item, index) => {
     price: 200,
     cover: testImage,
   };
+});
+
+// 初始化 WebSocket 连接
+const initWebSocket = () => {
+  socket.value = new WebSocket("ws://your-websocket-url");
+
+  socket.value.onopen = () => {
+    console.log("WebSocket connection opened");
+    socket.value.send("Hello Server!");
+  };
+
+  socket.value.onmessage = (event) => {
+    console.log("Message from server ", event.data);
+    // 收到消息时重置心跳定时器
+    resetHeartbeat();
+  };
+
+  socket.value.onclose = () => {
+    console.log("WebSocket connection closed");
+    stopHeartbeat();
+    reconnect();
+  };
+
+  socket.value.onerror = (error) => {
+    console.error("WebSocket error: ", error);
+    // 可以在这里处理错误逻辑
+  };
+};
+
+// 发送消息
+const sendMessage = (message) => {
+  if (socket.value && socket.value.readyState === WebSocket.OPEN) {
+    socket.value.send(message);
+  } else {
+    console.error("WebSocket is not open");
+  }
+};
+
+// 断线重连
+const reconnect = () => {
+  setTimeout(() => {
+    console.log("Attempting to reconnect...");
+    initWebSocket();
+  }, 3000); // 3秒后尝试重新连接
+};
+
+// 开始心跳
+const startHeartbeat = () => {
+  heartbeatInterval = setInterval(() => {
+    sendMessage("ping");
+  }, 5000); // 每5秒发送一次心跳包
+};
+
+// 停止心跳
+const stopHeartbeat = () => {
+  if (heartbeatInterval) {
+    clearInterval(heartbeatInterval);
+    heartbeatInterval = null;
+  }
+};
+
+// 重置心跳
+const resetHeartbeat = () => {
+  stopHeartbeat();
+  startHeartbeat();
+};
+
+// 组件生命周期钩子
+onMounted(() => {
+  initWebSocket();
+});
+
+onBeforeUnmount(() => {
+  if (socket.value) {
+    socket.value.close();
+    stopHeartbeat();
+  }
 });
 </script>
 
