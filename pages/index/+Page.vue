@@ -38,7 +38,13 @@
   </div>
 
   <div class="preview-video" v-if="videoSrc">
-    <video muted controls>
+    <video
+      muted
+      controls
+      autoplay
+      @ended="handleVideoEnded"
+      @error="handleVideoError"
+    >
       <source :src="videoSrc" type="video/mp4" />
     </video>
   </div>
@@ -129,6 +135,11 @@ const stopHeartbeat = () => {
 const resetHeartbeat = () => {
   stopHeartbeat();
   startHeartbeat();
+};
+
+// 播放结束自动关闭
+const handleVideoEnded = () => {
+  videoSrc.value = "";
 };
 
 // 组件生命周期钩子
