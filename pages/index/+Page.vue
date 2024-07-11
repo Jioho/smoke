@@ -36,6 +36,12 @@
       </div>
     </div>
   </div>
+
+  <div class="preview-video" v-if="videoSrc">
+    <video muted controls>
+      <source :src="videoSrc" type="video/mp4" />
+    </video>
+  </div>
 </template>
 
 <script setup>
@@ -44,6 +50,9 @@ import testImage from "./assets/test.jpg";
 
 const list = ref([]);
 const socket = ref(null);
+const videoSrc = ref("");
+// 心跳相关
+let heartbeatInterval = null;
 
 list.value = new Array(5 * 4).fill({}).map((item, index) => {
   return {
@@ -61,7 +70,8 @@ const initWebSocket = () => {
 
   socket.value.onopen = () => {
     console.log("WebSocket connection opened");
-    socket.value.send("Hello Server!");
+    startHeartbeat();
+    // socket.value.send("Hello Server!");
   };
 
   socket.value.onmessage = (event) => {
@@ -78,7 +88,8 @@ const initWebSocket = () => {
 
   socket.value.onerror = (error) => {
     console.error("WebSocket error: ", error);
-    // 可以在这里处理错误逻辑
+    // 处理错误逻辑
+    reconnect();
   };
 };
 
@@ -246,6 +257,23 @@ body {
     .price-norem {
       padding: 0px 2px;
     }
+  }
+}
+
+.preview-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: #000;
+  z-index: 100;
+
+  video {
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    object-fit: contain; /* 控制视频内容完全显示并保持宽高比 */
   }
 }
 </style>
