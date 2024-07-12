@@ -9,24 +9,24 @@
             <div
               class="cover"
               :style="{
-                backgroundImage: 'url(' + item.cover + ')',
+                backgroundImage: 'url(' + item.attachfile + ')',
               }"
             ></div>
             <div class="info">
               <div class="info-row">
                 <span class="label">香烟名称：</span>
                 <span class="text name border-bottom-norem">{{
-                  item.name
+                  item.goods_name
                 }}</span>
               </div>
               <div class="info-row">
                 <span class="label">产地：</span>
                 <span class="text origin border-bottom-norem">
-                  {{ item.origin }}
+                  {{ item.goods_producer }}
                 </span>
                 <span class="label">零售价：</span>
                 <span class="text price price-norem">
-                  {{ item.price }}
+                  {{ item.goods_price }}
                 </span>
                 <span class="label">元/条</span>
               </div>
@@ -38,20 +38,14 @@
   </div>
 
   <div class="preview-video" v-if="videoSrc">
-    <video
-      muted
-      controls
-      autoplay
-      @ended="handleVideoEnded"
-      @error="handleVideoError"
-    >
+    <video muted autoplay @ended="handleVideoEnded" @error="handleVideoError">
       <source :src="videoSrc" type="video/mp4" />
     </video>
   </div>
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref, onMounted, onBeforeUnmount } from "vue";
 import testImage from "./assets/test.jpg";
 
 const list = ref([]);
@@ -59,16 +53,7 @@ const socket = ref(null);
 const videoSrc = ref("");
 // 心跳相关
 let heartbeatInterval = null;
-
-list.value = new Array(5 * 4).fill({}).map((item, index) => {
-  return {
-    id: index + 1,
-    name: "中华",
-    origin: "中国",
-    price: 200,
-    cover: testImage,
-  };
-});
+let videoInterval = null;
 
 // 初始化 WebSocket 连接
 const initWebSocket = () => {
@@ -140,11 +125,62 @@ const resetHeartbeat = () => {
 // 播放结束自动关闭
 const handleVideoEnded = () => {
   videoSrc.value = "";
+  fetch("https://wxapp.xiaobaizhaozhaozhao.top/api/index/clearCode")
+    .then((res) => {
+      return res.json();
+    })
+    .then((res) => {
+      console.log(res);
+    })
+    .finally(() => {
+      getVideoList();
+    });
+};
+
+/** 获取列表 */
+const initSmokeList = () => {
+  fetch(
+    "https://wxapp.xiaobaizhaozhaozhao.top/api/index/getGoodsList?page=1&size=20"
+  )
+    .then((res) => {
+      return res.json();
+    })
+    .then((res) => {
+      list.value = res.data.rows || [];
+    });
+};
+
+// 轮询视频
+const getVideoList = () => {
+  let queryNextTime = true;
+  clearInterval(videoInterval);
+  fetch("https://wxapp.xiaobaizhaozhaozhao.top/api/index/getCode")
+    .then((res) => {
+      return res.json();
+    })
+    .then((res) => {
+      if (
+        res.code == 1 &&
+        res.data &&
+        res.data.data &&
+        res.data.data.videofile
+      ) {
+        queryNextTime = false;
+        videoSrc.value = res.data.data.videofile;
+      }
+    })
+    .finally(() => {
+      if (queryNextTime) {
+        videoInterval = setTimeout(() => getVideoList(), 2000);
+      }
+    });
 };
 
 // 组件生命周期钩子
 onMounted(() => {
-  initWebSocket();
+  // initWebSocket();
+  initSmokeList();
+  getVideoList();
 });
 
 onBeforeUnmount(() => {
@@ -152,6 +188,8 @@ onBeforeUnmount(() => {
     socket.value.close();
     stopHeartbeat();
   }
+
+  clearInterval(videoInterval);
 });
 </script>
 

@@ -3,15 +3,15 @@
     "file": "assets/static/onRenderClient.C2Z84J1b.css",
     "src": "_chunk-!~{004}~.js"
   },
-  "_chunk-BHXpNCQk.js": {
-    "file": "assets/chunks/chunk-BHXpNCQk.js",
+  "_chunk-D8UCPDNK.js": {
+    "file": "assets/chunks/chunk-D8UCPDNK.js",
     "name": "_onRenderClient",
     "css": [
       "assets/static/onRenderClient.C2Z84J1b.css"
     ]
   },
   "node_modules/.pnpm/vike@0.4.177_vite@5.3.1/node_modules/vike/dist/esm/client/server-routing-runtime/entry.js": {
-    "file": "assets/entries/entry-server-routing.C-mh0ppr.js",
+    "file": "assets/entries/entry-server-routing.cDYmI04_.js",
     "name": "entries/entry-server-routing",
     "src": "node_modules/.pnpm/vike@0.4.177_vite@5.3.1/node_modules/vike/dist/esm/client/server-routing-runtime/entry.js",
     "isEntry": true,
@@ -25,32 +25,29 @@
     "src": "pages/index/assets/test.jpg"
   },
   "virtual:vike:pageConfigValuesAll:client:/pages/_error": {
-    "file": "assets/entries/pages_error.CHaNJNWr.js",
+    "file": "assets/entries/pages_error.DrRK4A00.js",
     "name": "entries/pages/_error",
     "src": "virtual:vike:pageConfigValuesAll:client:/pages/_error",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
-      "_chunk-BHXpNCQk.js"
+      "_chunk-D8UCPDNK.js"
     ],
     "css": [
       "assets/static/error.B3JP9_5u.css"
     ]
   },
   "virtual:vike:pageConfigValuesAll:client:/pages/index": {
-    "file": "assets/entries/pages_index.QQ3mWa5h.js",
+    "file": "assets/entries/pages_index.LiosB3AA.js",
     "name": "entries/pages/index",
     "src": "virtual:vike:pageConfigValuesAll:client:/pages/index",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
-      "_chunk-BHXpNCQk.js"
+      "_chunk-D8UCPDNK.js"
     ],
     "css": [
-      "assets/static/index.VyhAyBWW.css"
-    ],
-    "assets": [
-      "assets/static/test.chU2CEVk.jpg"
+      "assets/static/index.Pv2uFnd9.css"
     ]
   }
 }
