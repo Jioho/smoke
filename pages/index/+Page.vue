@@ -2,39 +2,51 @@
   <div class="page-wrap">
     <div class="page-title">常规卷烟品牌展示区</div>
 
-    <div class="page-content">
-      <div class="list">
-        <div class="item" v-for="item in list" :key="item.id">
-          <div class="item-wrap">
-            <div
-              class="cover"
-              :style="{
-                backgroundImage: 'url(' + item.attachfile + ')',
-              }"
-            ></div>
-            <div class="info">
-              <div class="info-row">
-                <span class="label">香烟名称：</span>
-                <span class="text name border-bottom-norem">{{
-                  item.goods_name
-                }}</span>
-              </div>
-              <div class="info-row">
-                <span class="label">产地：</span>
-                <span class="text origin border-bottom-norem">
-                  {{ item.goods_producer }}
-                </span>
-                <span class="label">零售价：</span>
-                <span class="text price price-norem">
-                  {{ item.goods_price }}
-                </span>
-                <span class="label">元/条</span>
+    <Swiper
+      class="page-content"
+      :slidesPerView="1"
+      :spaceBetween="30"
+      :loop="true"
+      :centeredSlides="true"
+      :pagination="{ clickable: true }"
+      :autoplay="{ delay: 8000, disableOnInteraction: false }"
+      :navigation="true"
+      :modules="modules"
+    >
+      <swiper-slide v-for="(group, index) in list" :key="index">
+        <div class="list">
+          <div class="item" v-for="item in group" :key="item.id">
+            <div class="item-wrap">
+              <div
+                class="cover"
+                :style="{
+                  backgroundImage: 'url(' + item.attachfile + ')',
+                }"
+              ></div>
+              <div class="info">
+                <div class="info-row">
+                  <span class="label">香烟名称：</span>
+                  <span class="text name border-bottom-norem">{{
+                    item.goods_name
+                  }}</span>
+                </div>
+                <div class="info-row">
+                  <span class="label">产地：</span>
+                  <span class="text origin border-bottom-norem">
+                    {{ item.goods_producer }}
+                  </span>
+                  <span class="label">零售价：</span>
+                  <span class="text price price-norem">
+                    {{ item.goods_price }}
+                  </span>
+                  <span class="label">元/条</span>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    </div>
+      </swiper-slide>
+    </Swiper>
   </div>
 
   <div class="preview-video" v-if="videoSrc">
@@ -46,7 +58,12 @@
 
 <script setup>
 import { ref, onMounted, onBeforeUnmount } from "vue";
-import testImage from "./assets/test.jpg";
+import { Swiper, SwiperSlide } from "swiper/vue";
+import { Autoplay, Pagination } from "swiper"; // 分页器
+import "swiper/css";
+import "swiper/css/pagination";
+
+const modules = [Autoplay, Pagination];
 
 const list = ref([]);
 const socket = ref(null);
@@ -137,6 +154,15 @@ const handleVideoEnded = () => {
     });
 };
 
+function chunkArray(array, size) {
+  const result = [];
+  for (let i = 0; i < array.length; i += size) {
+    const chunk = array.slice(i, i + size);
+    result.push(chunk);
+  }
+  return result;
+}
+
 /** 获取列表 */
 const initSmokeList = () => {
   fetch(
@@ -146,7 +172,8 @@ const initSmokeList = () => {
       return res.json();
     })
     .then((res) => {
-      list.value = res.data.rows || [];
+      // res.data.rows = [...res.data.rows, ...res.data.rows, ...res.data.rows];
+      list.value = chunkArray(res.data.rows || [], 20);
     });
 };
 
@@ -225,6 +252,10 @@ body {
   width: 100%;
   height: 100%;
   padding-top: 14px;
+  padding-bottom: 10px;
+}
+.swiper-pagination {
+  bottom: 4px !important;
 }
 .list {
   display: flex;

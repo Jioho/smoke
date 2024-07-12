@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "npm run server:dev",
     "prod": "npm run build && npm run server:prod",
-    "build": "node shell/emptyDist.js && vite build",
+    "build": "node shell/emptyDist.js && vite build && node shell/zip.js",
     "server:dev": "node ./server",
     "server:prod": "cross-env NODE_ENV=production node ./server"
   },
@@ -15,6 +15,7 @@
     "axios": "^1.7.2",
     "dayjs": "^1.11.11",
     "reset-css": "^5.0.2",
+    "swiper": "7.4.1",
     "vant": "^4.9.1",
     "vue": "^3.4.29"
   },

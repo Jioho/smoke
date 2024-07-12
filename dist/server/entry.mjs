@@ -77,15 +77,15 @@ const pageFiles = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.definePro
     "file": "assets/static/onRenderClient.C2Z84J1b.css",
     "src": "_chunk-!~{004}~.js"
   },
-  "_chunk-D8UCPDNK.js": {
-    "file": "assets/chunks/chunk-D8UCPDNK.js",
+  "_chunk-DUMKq5wO.js": {
+    "file": "assets/chunks/chunk-DUMKq5wO.js",
     "name": "_onRenderClient",
     "css": [
       "assets/static/onRenderClient.C2Z84J1b.css"
     ]
   },
   "node_modules/.pnpm/vike@0.4.177_vite@5.3.1/node_modules/vike/dist/esm/client/server-routing-runtime/entry.js": {
-    "file": "assets/entries/entry-server-routing.cDYmI04_.js",
+    "file": "assets/entries/entry-server-routing.C3gNg8BJ.js",
     "name": "entries/entry-server-routing",
     "src": "node_modules/.pnpm/vike@0.4.177_vite@5.3.1/node_modules/vike/dist/esm/client/server-routing-runtime/entry.js",
     "isEntry": true,
@@ -94,42 +94,38 @@ const pageFiles = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.definePro
       "virtual:vike:pageConfigValuesAll:client:/pages/index"
     ]
   },
-  "pages/index/assets/test.jpg": {
-    "file": "assets/static/test.chU2CEVk.jpg",
-    "src": "pages/index/assets/test.jpg"
-  },
   "virtual:vike:pageConfigValuesAll:client:/pages/_error": {
-    "file": "assets/entries/pages_error.DrRK4A00.js",
+    "file": "assets/entries/pages_error.C8MLLobC.js",
     "name": "entries/pages/_error",
     "src": "virtual:vike:pageConfigValuesAll:client:/pages/_error",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
-      "_chunk-D8UCPDNK.js"
+      "_chunk-DUMKq5wO.js"
     ],
     "css": [
       "assets/static/error.B3JP9_5u.css"
     ]
   },
   "virtual:vike:pageConfigValuesAll:client:/pages/index": {
-    "file": "assets/entries/pages_index.LiosB3AA.js",
+    "file": "assets/entries/pages_index.BF-AB3ar.js",
     "name": "entries/pages/index",
     "src": "virtual:vike:pageConfigValuesAll:client:/pages/index",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
-      "_chunk-D8UCPDNK.js"
+      "_chunk-DUMKq5wO.js"
     ],
     "css": [
-      "assets/static/index.Pv2uFnd9.css"
+      "assets/static/index.BmGj-FFZ.css"
     ]
   }
 };
   const pluginManifest = {
     "version": "0.4.177",
     "usesClientRouter": false,
-    "baseServer": "/smoke/client/",
-    "baseAssets": "/smoke/client/",
+    "baseServer": "/web",
+    "baseAssets": "/web",
     "includeAssetsImportedByServer": true,
     "redirects": {},
     "trailingSlash": false,
