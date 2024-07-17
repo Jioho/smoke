@@ -85,7 +85,7 @@ const pageFiles = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.definePro
     ]
   },
   "node_modules/.pnpm/vike@0.4.177_vite@5.3.1/node_modules/vike/dist/esm/client/server-routing-runtime/entry.js": {
-    "file": "assets/entries/entry-server-routing.C3gNg8BJ.js",
+    "file": "assets/entries/entry-server-routing.CYhPmLmY.js",
     "name": "entries/entry-server-routing",
     "src": "node_modules/.pnpm/vike@0.4.177_vite@5.3.1/node_modules/vike/dist/esm/client/server-routing-runtime/entry.js",
     "isEntry": true,
@@ -108,7 +108,7 @@ const pageFiles = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.definePro
     ]
   },
   "virtual:vike:pageConfigValuesAll:client:/pages/index": {
-    "file": "assets/entries/pages_index.BF-AB3ar.js",
+    "file": "assets/entries/pages_index.Bk0v0HeD.js",
     "name": "entries/pages/index",
     "src": "virtual:vike:pageConfigValuesAll:client:/pages/index",
     "isEntry": true,
@@ -117,7 +117,7 @@ const pageFiles = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.definePro
       "_chunk-DUMKq5wO.js"
     ],
     "css": [
-      "assets/static/index.BmGj-FFZ.css"
+      "assets/static/index.sE_vciGt.css"
     ]
   }
 };

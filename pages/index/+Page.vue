@@ -25,21 +25,27 @@
               ></div>
               <div class="info">
                 <div class="info-row">
-                  <span class="label">香烟名称：</span>
+                  <span class="label">品名</span>
                   <span class="text name border-bottom-norem">{{
                     item.goods_name
                   }}</span>
                 </div>
-                <div class="info-row">
-                  <span class="label">产地：</span>
-                  <span class="text origin border-bottom-norem">
-                    {{ item.goods_producer }}
-                  </span>
-                  <span class="label">零售价：</span>
-                  <span class="text price price-norem">
+                <div class="price-info">
+                  <div class="flex-1">
+                    <div class="info-row">
+                      <span class="label">单位</span>
+                      <span class="text origin border-bottom-norem">盒</span>
+                    </div>
+                    <div class="info-row">
+                      <span class="label">产地</span>
+                      <span class="text origin border-bottom-norem">
+                        {{ item.goods_producer }}
+                      </span>
+                    </div>
+                  </div>
+                  <div class="flex-1 price">
                     {{ item.goods_price }}
-                  </span>
-                  <span class="label">元/条</span>
+                  </div>
                 </div>
               </div>
             </div>
@@ -50,7 +56,16 @@
   </div>
 
   <div class="preview-video" v-if="videoSrc">
-    <video muted autoplay @ended="handleVideoEnded" @error="handleVideoError">
+    <a href="javascript:;" class="toggle-voice" @click="handleVoiceToggle">
+      <voice :open="curVideoVoice"></voice>
+    </a>
+    <video
+      :muted="!curVideoVoice"
+      autoplay
+      @ended="handleVideoEnded"
+      @error="handleVideoError"
+      ref="videoRef"
+    >
       <source :src="videoSrc" type="video/mp4" />
     </video>
   </div>
@@ -62,12 +77,16 @@ import { Swiper, SwiperSlide } from "swiper/vue";
 import { Autoplay, Pagination } from "swiper"; // 分页器
 import "swiper/css";
 import "swiper/css/pagination";
+import voice from "./voice.vue";
 
 const modules = [Autoplay, Pagination];
 
 const list = ref([]);
 const socket = ref(null);
 const videoSrc = ref("");
+const canPlayVoice = ref(false);
+const curVideoVoice = ref(false);
+const videoRef = ref(null);
 // 心跳相关
 let heartbeatInterval = null;
 let videoInterval = null;
@@ -146,9 +165,6 @@ const handleVideoEnded = () => {
     .then((res) => {
       return res.json();
     })
-    .then((res) => {
-      console.log(res);
-    })
     .finally(() => {
       getVideoList();
     });
@@ -194,6 +210,11 @@ const getVideoList = () => {
       ) {
         queryNextTime = false;
         videoSrc.value = res.data.data.videofile;
+        if (canPlayVoice.value) {
+          curVideoVoice.value = true;
+        } else {
+          curVideoVoice.value = false;
+        }
       }
     })
     .finally(() => {
@@ -203,11 +224,20 @@ const getVideoList = () => {
     });
 };
 
+const handleVoiceToggle = () => {
+  curVideoVoice.value = !curVideoVoice.value;
+  videoRef.value.muted = !curVideoVoice.value;
+};
+
 // 组件生命周期钩子
 onMounted(() => {
   // initWebSocket();
   initSmokeList();
   getVideoList();
+
+  document.addEventListener("click", () => {
+    canPlayVoice.value = true;
+  });
 });
 
 onBeforeUnmount(() => {
@@ -286,22 +316,30 @@ body {
     width: 100%;
     flex: 1;
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: contain;
     background-position: center;
   }
 
   .info {
-    padding: 4px;
+    padding: 2px;
+    background-color: #006856;
     .info-row {
       display: flex;
-      align-items: flex-end;
+      align-items: center;
+      background-color: #fff;
+      padding: 1px;
       & + .info-row {
-        margin-top: 4px;
+        margin-top: 1px;
       }
+    }
+
+    .flex-1 {
+      flex: 1;
     }
 
     .label {
       font-size: 3px;
+      margin-right: 3px;
     }
     .text {
       font-size: 4px;
@@ -314,28 +352,52 @@ body {
       flex: 1;
       font-size: 5px;
       text-align: center;
+      color: #471d11;
+      font-weight: bold;
     }
 
     .origin {
       flex: 1;
       text-align: center;
-      font-size: 3px;
+      font-size: 4px;
+      color: #471d11;
+      font-weight: bold;
     }
 
-    .border-bottom-norem {
-      border-bottom: 1px solid rgba(0, 0, 0, 0.85);
-    }
+    // .border-bottom-norem {
+    //   border-bottom: 1px solid rgba(0, 0, 0, 0.85);
+    // }
 
     .price {
-      flex: 1;
-      background-color: yellow;
+      background-color: #d58703;
       text-align: center;
       font-weight: bold;
-      line-height: 1.5;
       font-size: 4px;
+      height: 100%;
+      display: block;
+      color: #471d11;
+      margin-left: 4px;
     }
     .price-norem {
       padding: 0px 2px;
+    }
+  }
+
+  .price-info {
+    position: relative;
+    padding-right: 50%;
+    margin-top: 1px;
+
+    .price {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+      width: 48.5%;
+      font-size: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
   }
 }
@@ -348,6 +410,18 @@ body {
   right: 0;
   background-color: #000;
   z-index: 100;
+
+  .toggle-voice {
+    position: absolute;
+    display: block;
+    top: 4px;
+    right: 4px;
+    width: 18px;
+    height: 18px;
+    color: #fff;
+    z-index: 100;
+    padding: 4px;
+  }
 
   video {
     width: 100%;
