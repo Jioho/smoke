@@ -6,23 +6,34 @@
       class="page-content"
       :slidesPerView="1"
       :spaceBetween="30"
-      :loop="true"
+      :loop="list.length > 1"
       :centeredSlides="true"
       :pagination="{ clickable: true }"
-      :autoplay="{ delay: 8000, disableOnInteraction: false }"
+      :autoplay="
+        list.length > 1 ? { delay: 8000, disableOnInteraction: false } : false
+      "
       :navigation="true"
       :modules="modules"
     >
       <swiper-slide v-for="(group, index) in list" :key="index">
         <div class="list">
-          <div class="item" v-for="item in group" :key="item.id">
+          <div
+            :class="[
+              'item',
+              { 'row-2': list.length === 1 && group.length <= 6 },
+            ]"
+            v-for="item in group"
+            :key="item.id"
+          >
             <div class="item-wrap">
-              <div
-                class="cover"
-                :style="{
-                  backgroundImage: 'url(' + item.attachfile + ')',
-                }"
-              ></div>
+              <div class="cover-wrap">
+                <div
+                  class="cover"
+                  :style="{
+                    backgroundImage: 'url(' + item.attachfile + ')',
+                  }"
+                ></div>
+              </div>
               <div class="info">
                 <div class="info-row">
                   <span class="label">品名</span>
@@ -188,7 +199,13 @@ const initSmokeList = () => {
       return res.json();
     })
     .then((res) => {
-      // res.data.rows = [...res.data.rows, ...res.data.rows, ...res.data.rows];
+      // res.data.rows = [
+      //   ...res.data.rows,
+      //   ...res.data.rows,
+      //   ...res.data.rows,
+      //   res.data.rows[0],
+      // ];
+      // res.data.rows.length = 4
       list.value = chunkArray(res.data.rows || [], 20);
     });
 };
@@ -268,7 +285,7 @@ body {
 
 .page-title {
   text-align: center;
-  font-size: 8px;
+  font-size: 12px;
   color: red;
   padding: 3px 0;
   font-weight: bold;
@@ -281,7 +298,7 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  padding-top: 14px;
+  padding-top: 16px;
   padding-bottom: 10px;
 }
 .swiper-pagination {
@@ -293,16 +310,22 @@ body {
   height: 100%;
   width: 100%;
   padding: 0 4px;
+  // align-content: flex-start;
   .item {
     // width: 8.333%;
     // min-width: 8.333%;
     // max-width: 8.333%;
-    height: 25%;
     width: 20%;
     min-width: 20%;
     max-width: 20%;
-    height: 25%;
+    min-height: 25%;
+    max-height: 33%;
+    flex: 1;
     padding: 3px 3px;
+
+    &.row-2 {
+      max-height: 50%;
+    }
   }
 
   .item-wrap {
@@ -312,12 +335,19 @@ body {
     flex-direction: column;
   }
 
-  .cover {
+  .cover-wrap {
     width: 100%;
     flex: 1;
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: center;
+
+    padding: 2px 0;
+
+    .cover {
+      width: 100%;
+      height: 100%;
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position: center;
+    }
   }
 
   .info {
@@ -350,10 +380,14 @@ body {
 
     .name {
       flex: 1;
-      font-size: 5px;
+      font-size: 4px;
       text-align: center;
       color: #471d11;
       font-weight: bold;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+      word-break: break-all;
     }
 
     .origin {

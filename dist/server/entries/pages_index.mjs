@@ -1,6 +1,6 @@
-import { i as import1 } from "../chunks/chunk-CqITkscy.js";
+import { i as import1 } from "../chunks/chunk-HHhj972H.js";
 import { mergeProps, useSSRContext, ref, onMounted, onBeforeUnmount, unref, withCtx, createVNode, openBlock, createBlock, Fragment, renderList, toDisplayString } from "vue";
-import { ssrRenderAttrs, ssrRenderComponent, ssrRenderList, ssrRenderStyle, ssrInterpolate, ssrIncludeBooleanAttr, ssrRenderAttr } from "vue/server-renderer";
+import { ssrRenderAttrs, ssrRenderComponent, ssrRenderList, ssrRenderClass, ssrRenderStyle, ssrInterpolate, ssrIncludeBooleanAttr, ssrRenderAttr } from "vue/server-renderer";
 import { Swiper, SwiperSlide } from "swiper/vue";
 import { Autoplay, Pagination } from "swiper";
 import "@vue/server-renderer";
@@ -108,10 +108,10 @@ const _sfc_main = {
         class: "page-content",
         slidesPerView: 1,
         spaceBetween: 30,
-        loop: true,
+        loop: list.value.length > 1,
         centeredSlides: true,
         pagination: { clickable: true },
-        autoplay: { delay: 8e3, disableOnInteraction: false },
+        autoplay: list.value.length > 1 ? { delay: 8e3, disableOnInteraction: false } : false,
         navigation: true,
         modules
       }, {
@@ -124,9 +124,12 @@ const _sfc_main = {
                   if (_push3) {
                     _push3(`<div class="list"${_scopeId2}><!--[-->`);
                     ssrRenderList(group, (item) => {
-                      _push3(`<div class="item"${_scopeId2}><div class="item-wrap"${_scopeId2}><div class="cover" style="${ssrRenderStyle({
+                      _push3(`<div class="${ssrRenderClass([
+                        "item",
+                        { "row-2": list.value.length === 1 && group.length <= 6 }
+                      ])}"${_scopeId2}><div class="item-wrap"${_scopeId2}><div class="cover-wrap"${_scopeId2}><div class="cover" style="${ssrRenderStyle({
                         backgroundImage: "url(" + item.attachfile + ")"
-                      })}"${_scopeId2}></div><div class="info"${_scopeId2}><div class="info-row"${_scopeId2}><span class="label"${_scopeId2}>品名</span><span class="text name border-bottom-norem"${_scopeId2}>${ssrInterpolate(item.goods_name)}</span></div><div class="price-info"${_scopeId2}><div class="flex-1"${_scopeId2}><div class="info-row"${_scopeId2}><span class="label"${_scopeId2}>单位</span><span class="text origin border-bottom-norem"${_scopeId2}>盒</span></div><div class="info-row"${_scopeId2}><span class="label"${_scopeId2}>产地</span><span class="text origin border-bottom-norem"${_scopeId2}>${ssrInterpolate(item.goods_producer)}</span></div></div><div class="flex-1 price"${_scopeId2}>${ssrInterpolate(item.goods_price)}</div></div></div></div></div>`);
+                      })}"${_scopeId2}></div></div><div class="info"${_scopeId2}><div class="info-row"${_scopeId2}><span class="label"${_scopeId2}>品名</span><span class="text name border-bottom-norem"${_scopeId2}>${ssrInterpolate(item.goods_name)}</span></div><div class="price-info"${_scopeId2}><div class="flex-1"${_scopeId2}><div class="info-row"${_scopeId2}><span class="label"${_scopeId2}>单位</span><span class="text origin border-bottom-norem"${_scopeId2}>盒</span></div><div class="info-row"${_scopeId2}><span class="label"${_scopeId2}>产地</span><span class="text origin border-bottom-norem"${_scopeId2}>${ssrInterpolate(item.goods_producer)}</span></div></div><div class="flex-1 price"${_scopeId2}>${ssrInterpolate(item.goods_price)}</div></div></div></div></div>`);
                     });
                     _push3(`<!--]--></div>`);
                   } else {
@@ -134,16 +137,21 @@ const _sfc_main = {
                       createVNode("div", { class: "list" }, [
                         (openBlock(true), createBlock(Fragment, null, renderList(group, (item) => {
                           return openBlock(), createBlock("div", {
-                            class: "item",
+                            class: [
+                              "item",
+                              { "row-2": list.value.length === 1 && group.length <= 6 }
+                            ],
                             key: item.id
                           }, [
                             createVNode("div", { class: "item-wrap" }, [
-                              createVNode("div", {
-                                class: "cover",
-                                style: {
-                                  backgroundImage: "url(" + item.attachfile + ")"
-                                }
-                              }, null, 4),
+                              createVNode("div", { class: "cover-wrap" }, [
+                                createVNode("div", {
+                                  class: "cover",
+                                  style: {
+                                    backgroundImage: "url(" + item.attachfile + ")"
+                                  }
+                                }, null, 4)
+                              ]),
                               createVNode("div", { class: "info" }, [
                                 createVNode("div", { class: "info-row" }, [
                                   createVNode("span", { class: "label" }, "品名"),
@@ -164,7 +172,7 @@ const _sfc_main = {
                                 ])
                               ])
                             ])
-                          ]);
+                          ], 2);
                         }), 128))
                       ])
                     ];
@@ -182,16 +190,21 @@ const _sfc_main = {
                     createVNode("div", { class: "list" }, [
                       (openBlock(true), createBlock(Fragment, null, renderList(group, (item) => {
                         return openBlock(), createBlock("div", {
-                          class: "item",
+                          class: [
+                            "item",
+                            { "row-2": list.value.length === 1 && group.length <= 6 }
+                          ],
                           key: item.id
                         }, [
                           createVNode("div", { class: "item-wrap" }, [
-                            createVNode("div", {
-                              class: "cover",
-                              style: {
-                                backgroundImage: "url(" + item.attachfile + ")"
-                              }
-                            }, null, 4),
+                            createVNode("div", { class: "cover-wrap" }, [
+                              createVNode("div", {
+                                class: "cover",
+                                style: {
+                                  backgroundImage: "url(" + item.attachfile + ")"
+                                }
+                              }, null, 4)
+                            ]),
                             createVNode("div", { class: "info" }, [
                               createVNode("div", { class: "info-row" }, [
                                 createVNode("span", { class: "label" }, "品名"),
@@ -212,7 +225,7 @@ const _sfc_main = {
                               ])
                             ])
                           ])
-                        ]);
+                        ], 2);
                       }), 128))
                     ])
                   ]),

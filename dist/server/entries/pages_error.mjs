@@ -1,4 +1,4 @@
-import { i as import1 } from "../chunks/chunk-CqITkscy.js";
+import { i as import1 } from "../chunks/chunk-HHhj972H.js";
 import { mergeProps, useSSRContext } from "vue";
 import { ssrRenderAttrs } from "vue/server-renderer";
 import "@vue/server-renderer";
